@@ -30,8 +30,17 @@ function init() {
         console.log("shikimori_sync", ": player start ", e);
         if (currently_playing.suitable) {
             currently_playing.season = e.season;
-            currently_playing.episode = e.episode - 1;
+            let isStandalone = Utils.isStandaloneApp();
+            console.log("shikimori_sync", " is app standalone : ", isStandalone);
+            if(!isStandalone){ //if web, we can catch destroy event and check if episode was watched far enough to count episode
+                currently_playing.episode = e.episode - 1;
+            } else {
+                currently_playing.episode = e.episode;
+            }
             await sendUserStats();
+            if (isStandalone) { //on standalone app there is no destroy event sent
+                currently_playing = {suitable: false}
+            }
         }
     });
     Lampa.Player.listener.follow('destroy', async function (e) {

@@ -1,3 +1,4 @@
+
 function storage_get_anonymously(name, defaults) {
     return Lampa.Storage.get(name, '') || defaults;
 }
@@ -104,6 +105,14 @@ function buildAuthUrl() {
         + "&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code&scope=user_rates";
 }
 
+function isStandaloneApp() {
+    return Lampa.Platform.is('apple')
+        || Lampa.Platform.macOS()
+        || Lampa.Platform.is('apple_tv')
+        || Lampa.Platform.is('webos')
+        || Lampa.Platform.is('android')
+        || Lampa.Platform.desktop()
+}
 
 export default {
     buildAuthUrl,
@@ -111,5 +120,6 @@ export default {
     getToken,
     getWhoAmI,
     findAnime,
-    setUserRate
+    setUserRate,
+    isStandaloneApp
 }
