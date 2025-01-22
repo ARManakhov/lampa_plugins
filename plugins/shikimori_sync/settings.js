@@ -14,7 +14,7 @@ function init() {
 
     function onUrlDataChange() {
         let auth_url = Utils.buildAuthUrl();
-        $('#shikimori_sync_qr_img').attr('src', "https://barcode.orcascan.com/?format=jpg&type=qr&data=".concat(encodeURI(auth_url)));
+        $('#shikimori_sync_qr_img').attr('src', "https://barcode.orcascan.com/?format=jpg&type=qr&data=".concat(encodeURIComponent(auth_url)));
         $('#shikimori_sync_qr_text').text(auth_url);
     }
 
@@ -46,7 +46,7 @@ function init() {
         },
         onRender: function onRender(e) {
             let auth_url = Utils.buildAuthUrl();
-            e.append("<img id='shikimori_sync_qr_img' style='padding-top: 1.5em; padding-bottom: 0.4em;' src=" + "https://barcode.orcascan.com/?format=jpg&type=qr&data=".concat(encodeURI(auth_url)) + " />");
+            e.append("<img id='shikimori_sync_qr_img' style='padding-top: 1.5em; padding-bottom: 0.4em;' src=" + "https://barcode.orcascan.com/?format=jpg&type=qr&data=".concat(encodeURIComponent(auth_url)) + " />");
             e.append("<div id='shikimori_sync_qr_text' style='word-wrap: break-word;'>" + auth_url + "</div>");
         },
     });

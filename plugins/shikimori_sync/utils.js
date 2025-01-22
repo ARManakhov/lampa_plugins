@@ -71,7 +71,7 @@ async function getWhoAmI() {
 }
 
 function findAnime(query) {
-    return fetch(get_host() + '/api/animes?limit=1&search='.concat(encodeURI(query)))
+    return fetch(get_host() + '/api/animes?limit=1&search='.concat(encodeURIComponent(query)))
         .then(r => r.json())
 }
 
