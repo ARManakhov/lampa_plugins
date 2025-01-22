@@ -100,7 +100,6 @@ function init() {
             name: "Host"
         },
         onChange: function onChange() {
-            console.log("here")
             onUrlDataChange();
         }
     });
