@@ -26,7 +26,7 @@ function init() {
             currently_playing.suitable = false;
         }
     });
-    Lampa.Player.listener.follow('start', async function (e) {
+    Lampa.Player.listener.follow('start_shikimori', async function (e) {
         console.log("shikimori_sync: player start ", e);
         if (currently_playing.suitable) {
             currently_playing.season = e.season;
