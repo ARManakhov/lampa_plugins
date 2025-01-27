@@ -55,7 +55,7 @@ async function checkAndUpdateToken() {
         form.append('grant_type', 'refresh_token');
         form.append('client_id', get_client_id());
         form.append('client_secret', get_client_secret());
-        form.append('refresh_token', Lampa.Storage.get("shikimori_sync_access_token", undefined));
+        form.append('refresh_token', Lampa.Storage.get("shikimori_sync_refresh_token", undefined));
 
         await tokenRequest(form);
     }
